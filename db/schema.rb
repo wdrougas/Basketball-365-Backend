@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_01_29_140657) do
     t.string "home_team_score"
     t.string "arena"
     t.string "city"
-    t.string "date"
+    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
