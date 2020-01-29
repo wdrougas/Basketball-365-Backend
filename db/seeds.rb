@@ -9,12 +9,12 @@
 
 require 'rest-client'
 
-User.destroy_all
-Comment.destroy_all
-Game.destroy_all
-Player.destroy_all
-TeamGame.destroy_all
-Team.destroy_all
+# User.destroy_all
+# Comment.destroy_all
+# Game.destroy_all
+# Player.destroy_all
+# TeamGame.destroy_all
+# Team.destroy_all
 
 headers = {
     "X-RapidAPI-Host" => "api-nba-v1.p.rapidapi.com",
@@ -35,19 +35,7 @@ games_array = JSON.parse(games)['api']['games']
 # visiting team teamID = JSON.parse(games)['api']['games'][index]['vTeam']['teamId']
 # home team teamID = JSON.parse(games)['api']['games'][index]['hTeam']['teamId']
 
-create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password_digest"
-    t.string "email"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "team_id"
 
 
-will = User.create(username: 'wdrougas', password_digest: 'password', email: 'wdrougas@gmail.com', first_name: 'Will', last_name: 'Drougas', team_id: 17)
+# will = User.create(username: 'wdrougas', password_digest: 'password', email: 'wdrougas@gmail.com', first_name: 'Will', last_name: 'Drougas', team_id: 17)
 
-games_array.each do |game|
-    Game.create(
-        
-    )
-end
