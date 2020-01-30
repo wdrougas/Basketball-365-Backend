@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     def destroy
         user.delete
-        render json: {message: "Comment deleted"}
+        render json: {message: "Profile deleted"}
     end
 
     private

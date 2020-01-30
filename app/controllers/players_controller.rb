@@ -23,8 +23,13 @@ class PlayersController < ApplicationController
                     {
                         :except => [:created_at, :updated_at]
                     }
-                }}
+                }
+            }
     end
+
+    
+
+
 
     
 

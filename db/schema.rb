@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 2020_01_29_140657) do
 
   create_table "games", force: :cascade do |t|
     t.integer "game_id"
-    t.string "visiting_team"
+    t.string "visiting_team_name"
     t.integer "visiting_team_id"
     t.string "visiting_team_score"
-    t.string "home_team"
+    t.string "home_team_name"
     t.integer "home_team_id"
     t.string "home_team_score"
     t.string "arena"

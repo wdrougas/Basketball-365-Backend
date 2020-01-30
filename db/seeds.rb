@@ -8,7 +8,6 @@
 
 
 require 'rest-client'
-require 'active_support'
 
 User.destroy_all
 Comment.destroy_all
@@ -40,7 +39,7 @@ teams_array.each do |team|
 
   if (team['leagues']['standard']['confName'] != 'Intl' &&  team['logo'] != "") 
   Team.create(
-    team_id: team['teamId'],
+    team_id: team['teamId'].to_i,
     name: team['fullName'],
     logo: team['logo']
   )
@@ -49,29 +48,33 @@ end
 
 
 players_array.each do |player|
+  team = Team.all.find_by(team_id: player['teamId'].to_i)
+  if(player['teamId'] != nil && team)
   Player.create(
     player_id: player['playerId'].to_i,
     college: player['collegeName'],
     country: player['country'],
     yearsPro: player['yearsPro'],
-    team_id: player['teamId'].to_i,
+    team_id: team.id,
     date_of_birth: player['dateOfBirth'],
     position: player['leagues']['standard']['pos'],
     first_name: player['firstName'],
     last_name: player ['lastName']
   )
+  end
 end
 
 games_array.each do |game|
-  if (game['startTimeUTC'].to_datetime > 'Tue, 22 Oct 2019 00:00:00 +0000')
-    byebug
-  Game.create(
+  visiting_team = Team.all.find_by(team_id: game['vTeam']['teamId'].to_i)
+  home_team = Team.all.find_by(team_id: game['hTeam']['teamId'].to_i)
+  if (game['startTimeUTC'].to_datetime > 'Tue, 22 Oct 2019 00:00:00 +0000' && visiting_team && home_team)
+  game = Game.create(
     game_id: game['gameId'].to_i,
-    visiting_team: game['vTeam']['fullName'],
-    visiting_team_id: game['vTeam']['teamId'].to_i,
+    visiting_team_name: visiting_team.name,
+    visiting_team_id: visiting_team.id,
     visiting_team_score: game['vTeam']['score']['points'],
-    home_team: game['hTeam']['fullName'],
-    home_team_id: game['hTeam']['teamId'].to_i,
+    home_team_name: home_team.name,
+    home_team_id: home_team.id,
     home_team_score: game['hTeam']['score']['points'],
     arena: game['arena'],
     city: game['city'],
@@ -79,6 +82,7 @@ games_array.each do |game|
   )
   end
 end
+
 
 
 

@@ -16,13 +16,7 @@ class GamesController < ApplicationController
 
 
     def serialized_data
-        {:except => [:created_at, :updated_at],
-            :include => {
-                :teams => 
-                {
-                    :except => [:created_at, :updated_at]
-                }
-            }}
+        {:except => [:created_at, :updated_at]}
     end
 
 

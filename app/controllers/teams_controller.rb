@@ -21,7 +21,11 @@ class TeamsController < ApplicationController
                 {
                     :except => [:created_at, :updated_at]
                 },
-                :games => 
+                :home_games => 
+                {
+                    :except => [:created_at, :updated_at]
+                },
+                :visiting_games => 
                 {
                     :except => [:created_at, :updated_at]
                 },
