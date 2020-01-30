@@ -26,9 +26,11 @@ ActiveRecord::Schema.define(version: 2020_01_29_140657) do
   create_table "games", force: :cascade do |t|
     t.integer "game_id"
     t.string "visiting_team_name"
+    t.string "visiting_team_logo"
     t.integer "visiting_team_id"
     t.string "visiting_team_score"
     t.string "home_team_name"
+    t.string "home_team_logo"
     t.integer "home_team_id"
     t.string "home_team_score"
     t.string "arena"

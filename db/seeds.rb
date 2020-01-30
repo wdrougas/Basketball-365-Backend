@@ -71,9 +71,11 @@ games_array.each do |game|
   game = Game.create(
     game_id: game['gameId'].to_i,
     visiting_team_name: visiting_team.name,
+    visiting_team_logo: visiting_team.logo,
     visiting_team_id: visiting_team.id,
     visiting_team_score: game['vTeam']['score']['points'],
     home_team_name: home_team.name,
+    home_team_logo: home_team.logo,
     home_team_id: home_team.id,
     home_team_score: game['hTeam']['score']['points'],
     arena: game['arena'],
