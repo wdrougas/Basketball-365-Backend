@@ -65,6 +65,7 @@ players_array.each do |player|
 end
 
 games_array.each do |game|
+  
   visiting_team = Team.all.find_by(team_id: game['vTeam']['teamId'].to_i)
   home_team = Team.all.find_by(team_id: game['hTeam']['teamId'].to_i)
   if (game['startTimeUTC'].to_datetime > 'Tue, 22 Oct 2019 00:00:00 +0000' && visiting_team && home_team)
@@ -78,7 +79,7 @@ games_array.each do |game|
     home_team_score: game['hTeam']['score']['points'],
     arena: game['arena'],
     city: game['city'],
-    date: game['startTimeUTC'].to_datetime
+    date: game['startTimeUTC'].to_date
   )
   end
 end
