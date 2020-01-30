@@ -10,7 +10,7 @@ class CreateGames < ActiveRecord::Migration[6.0]
       t.string :home_team_score
       t.string :arena
       t.string :city
-      t.date :date
+      t.string :date
 
       t.timestamps
     end
