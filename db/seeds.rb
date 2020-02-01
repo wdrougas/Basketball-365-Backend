@@ -24,6 +24,8 @@ headers = {
 teams = RestClient.get("https://api-nba-v1.p.rapidapi.com/teams/league/standard", headers)
 players = RestClient.get("https://api-nba-v1.p.rapidapi.com/players/league/standard", headers)
 games = RestClient.get('https://api-nba-v1.p.rapidapi.com/games/league/standard/2019', headers)
+east_standings = RestClient.get("https://api-nba-v1.p.rapidapi.com/standings/standard/2019/conference/East", headers)
+west_standings = RestClient.get("https://api-nba-v1.p.rapidapi.com/standings/standard/2019/conference/West", headers)
 
 teams_array = JSON.parse(teams)['api']['teams']
 #teamID = JSON.parse(teams)['api']['teams'][index]['teamId']
@@ -33,6 +35,9 @@ players_array = JSON.parse(players)['api']['players']
 games_array = JSON.parse(games)['api']['games']
 # visiting team teamID = JSON.parse(games)['api']['games'][index]['vTeam']['teamId']
 # home team teamID = JSON.parse(games)['api']['games'][index]['hTeam']['teamId']
+east_standings_array = JSON.parse(east_standings)['api']['standings']
+west_standings_array = JSON.parse(west_standings)['api']['standings']
+
 
 
 teams_array.each do |team|
@@ -85,14 +90,30 @@ games_array.each do |game|
   end
 end
 
+east_standings_array.each do |standing|
+  team = Team.all.find_by(team_id: standing['teamId'].to_i)
+  east_standing = Standing.create(
+    team_name: team.name,
+    team_logo: team.logo,
+    team_id: team.id,
+    win: standing['win'].to_i,
+    loss: standing['loss'].to_i,
+    conference: standing['conference']['name']
+  )
+end
 
 
-
-
-
-
-
-
+west_standings_array.each do |standing|
+  team = Team.all.find_by(team_id: standing['teamId'].to_i)
+  west_standing = Standing.create(
+    team_name: team.name,
+    team_logo: team.logo,
+    team_id: team.id,
+    win: standing['win'].to_i,
+    loss: standing['loss'].to_i,
+    conference: standing['conference']['name']
+  )
+end
 
 
 
