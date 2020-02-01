@@ -37,10 +37,7 @@ class TeamsController < ApplicationController
                 {
                     :except => [:created_at, :updated_at]
                 }
-                :standing => 
-                {
-                    :except => [:created_at, :updated_at]
-                }
+                
             }
         }
     end
