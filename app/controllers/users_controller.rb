@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 
     def create
         user = User.create(strong_params)
-        if comment.valid?
-            render json: comment.to_json(serialized_data)
+        if user.valid?
+            render json: user.to_json(serialized_data)
         end
     end
 

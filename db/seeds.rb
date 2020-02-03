@@ -9,8 +9,6 @@
 
 require 'rest-client'
 
-User.destroy_all
-Comment.destroy_all
 Game.destroy_all
 Player.destroy_all
 TeamGame.destroy_all
@@ -116,6 +114,10 @@ west_standings_array.each do |standing|
 end
 
 
+will = User.create(username: 'wdrougas', password_digest: 'password', email: 'wdrougas@gmail.com', first_name: "Will", last_name: "Drougas", team_id: 17)
 
-will = User.create(username: 'wdrougas', password_digest: 'password', email: 'wdrougas@gmail.com', first_name: 'Will', last_name: 'Drougas', team_id: 17)
+
+#will = User.create(username: 'wdrougas', password_digest: 'password', email: 'wdrougas@gmail.com', first_name: 'Will', last_name: 'Drougas', team_id: 17)
+
+
 
