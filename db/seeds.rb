@@ -9,6 +9,7 @@
 
 require 'rest-client'
 
+
 Game.destroy_all
 Player.destroy_all
 TeamGame.destroy_all
@@ -16,9 +17,8 @@ Team.destroy_all
 
 headers = {
   "X-RapidAPI-Host" => "api-nba-v1.p.rapidapi.com",
-  "X-RapidAPI-Key" => Rails.application.credentials.API_KEY
+  "X-RapidAPI-Key" => ENV['API_KEY']
 }
-
 teams = RestClient.get("https://api-nba-v1.p.rapidapi.com/teams/league/standard", headers)
 players = RestClient.get("https://api-nba-v1.p.rapidapi.com/players/league/standard", headers)
 games = RestClient.get('https://api-nba-v1.p.rapidapi.com/games/league/standard/2019', headers)
