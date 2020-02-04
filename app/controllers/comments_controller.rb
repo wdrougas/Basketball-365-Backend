@@ -14,12 +14,14 @@ class CommentsController < ApplicationController
     end
 
     def show
+        comment = Comment.find(params[:id])
         render json: comment.to_json(serialized_data)
     end
 
     def destroy
+        comment = Comment.find(params[:id])
         comment.delete
-        render json: {message: "Comment deleted"}
+        render json: comment.to_json(serialized_data)
     end
 
     private
@@ -29,7 +31,7 @@ class CommentsController < ApplicationController
     end
 
     def serialized_data
-        {:except => [:created_at, :updated_at],
+        {
             :include => {
                 :user => 
                 {
@@ -43,7 +45,7 @@ class CommentsController < ApplicationController
         }
     end
 
-    def find_user
+    def find_comment
         comment = Comment.find(params[:id])
     end
     
