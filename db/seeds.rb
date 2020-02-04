@@ -14,7 +14,7 @@ Game.destroy_all
 Player.destroy_all
 TeamGame.destroy_all
 Team.destroy_all
-Comment.destroy_all
+Standing.destroy_all
 
 headers = {
   "X-RapidAPI-Host" => "api-nba-v1.p.rapidapi.com",
