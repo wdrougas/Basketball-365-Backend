@@ -41,12 +41,12 @@ class UsersController < ApplicationController
                     {
                         :except => [:created_at, :updated_at]
                     },
-                    :players => 
+                    :favorites => 
                     {
                         :except => [:created_at, :updated_at]
                     }
-        
-                }}
+                  }
+                }
     end
 
     def find_user
