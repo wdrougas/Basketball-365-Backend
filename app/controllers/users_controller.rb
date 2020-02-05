@@ -40,7 +40,12 @@ class UsersController < ApplicationController
                     :comments => 
                     {
                         :except => [:created_at, :updated_at]
+                    },
+                    :players => 
+                    {
+                        :except => [:created_at, :updated_at]
                     }
+        
                 }}
     end
 
@@ -49,3 +54,4 @@ class UsersController < ApplicationController
     end
 
 end
+
