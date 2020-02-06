@@ -9,7 +9,9 @@ class UsersController < ApplicationController
     def create
         user = User.create(strong_params)
         if user.valid?
-            render json: user.to_json(serialized_data)
+        render json: user.to_json(serialized_data)
+        else
+        render json: user.errors.messages
         end
     end
 
