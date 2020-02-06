@@ -2,7 +2,11 @@ class AuthController < ApplicationController
 
 def create 
     user = User.find_by(username: params[:username])
+    if !user.nil?
     render json: user.to_json(serialized_data)
+    else
+    render json: {error: "Invalid username. Please try again!"} 
+    end 
 end
 
 private
@@ -38,6 +42,6 @@ def serialized_data
                 }
     
             }}
-end
+    end
 
 end
