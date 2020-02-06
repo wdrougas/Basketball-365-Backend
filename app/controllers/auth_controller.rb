@@ -12,13 +12,27 @@ def serialized_data
             :include => {
                 :team => 
                 {
-                    :except => [:created_at, :updated_at]
+                    :except => [:created_at, :updated_at],
+                        :include => {
+                            :home_games => 
+                            {
+                                :except => [:created_at, :updated_at]
+                            },
+                            :visiting_games => 
+                            {
+                                :except => [:created_at, :updated_at]
+                            }
+                        }
                 },
                 :comments => 
                 {
                     :except => [:created_at, :updated_at]
                 },
                 :favorites => 
+                {
+                    :except => [:created_at, :updated_at]
+                },
+                :players =>
                 {
                     :except => [:created_at, :updated_at]
                 }
