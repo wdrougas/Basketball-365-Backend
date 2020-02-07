@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :watchlists
   resources :favorites
   resources :standings
   resources :team_games
