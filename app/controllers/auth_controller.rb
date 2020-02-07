@@ -34,7 +34,13 @@ def serialized_data
                 },
                 :favorites => 
                 {
-                    :except => [:created_at, :updated_at]
+                    :except => [:created_at, :updated_at],
+                        :include => {
+                            :player => 
+                            {
+                                :except => [:created_at, :updated_at]
+                            }
+                        }
                 },
                 :players =>
                 {
