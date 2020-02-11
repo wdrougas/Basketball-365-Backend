@@ -15,6 +15,12 @@ class UsersController < ApplicationController
         end
     end
 
+    def update
+        user = User.find(params[:id])
+        user.update(strong_params)
+        render json: user.to_json(serialized_data)
+    end
+
     def show
         user = User.find(params[:id])
         render json: user.to_json(serialized_data)
@@ -29,7 +35,7 @@ class UsersController < ApplicationController
     private
 
     def strong_params
-        params.require(:user).permit(:username, :password_digest, :email, :first_name, :last_name, :team_id)
+        params.require(:user).permit(:username, :email, :first_name, :last_name, :team_id)
     end
 
     def serialized_data
