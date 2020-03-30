@@ -38,7 +38,7 @@ class FavoritesController < ApplicationController
                 {
                     :except => [:created_at, :updated_at]
                 },
-                :player => 
+                :player =>  
                 {
                     :except => [:created_at, :updated_at]
                 }
